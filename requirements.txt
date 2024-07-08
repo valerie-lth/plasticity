@@ -1,0 +1,8 @@
+matplotlib==3.9.1
+numpy==2.0.0
+pyhessian==0.1
+python_dateutil==2.9.0.post0
+torch==2.2.2
+torchinfo==1.8.0
+torchvision==0.17.2
+tqdm==4.66.2
