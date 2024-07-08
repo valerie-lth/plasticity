@@ -154,7 +154,7 @@ def stair_task_change(train_uniform_mnist_subset, args):
     for smooth in np.arange(0, 1, args.smooth_inc):
         for task in range(num_tasks):
             # print("Starting task ", task)
-            random_class_train_soft_subset = smooth_labels(random_train, args.smooth_type, num_classes=args.num_classes, smoothing=smooth)
+            random_class_train_soft_subset = smooth_labels(random_train, num_classes=args.num_classes, smoothing=smooth)
             train_loader = DataLoader(random_class_train_soft_subset, args.batch_size, shuffle=True)
         
             total_train_batch = len(train_loader)
@@ -204,7 +204,7 @@ def continuous_task_change(train_uniform_mnist_subset, args):
         print("Starting task ", task)
         
         smooth_factor = 0
-        random_class_train_soft_subset = smooth_labels(random_train, args.smooth_type, num_classes=args.num_classes, smoothing=smooth_factor)
+        random_class_train_soft_subset = smooth_labels(random_train, num_classes=args.num_classes, smoothing=smooth_factor)
         train_loader = DataLoader(random_class_train_soft_subset, args.batch_size, shuffle=True)
     
         total_train_batch = len(train_loader)
@@ -256,7 +256,7 @@ def continuous_task_change(train_uniform_mnist_subset, args):
         for epoch in range(int(k/2 * epochs)):
             smooth_factor += 0.9/(k/2*epochs)
             
-            random_class_train_soft_subset = smooth_labels(random_train, args.smooth_type, num_classes=args.num_classes, smoothing=smooth_factor)
+            random_class_train_soft_subset = smooth_labels(random_train, num_classes=args.num_classes, smoothing=smooth_factor)
             train_loader = DataLoader(random_class_train_soft_subset, args.batch_size, shuffle=True)
         
             total_train_batch = len(train_loader)
@@ -302,7 +302,7 @@ def continuous_task_change(train_uniform_mnist_subset, args):
         # transition stage to 0 smoothing (gradually decrease smooth_factor from 0.9 to 0)
         for epoch in range(int(k/2 * epochs)):
             smooth_factor -= 0.9/(k/2*epochs)
-            random_class_train_soft_subset = smooth_labels(random_train, args.smooth_type, num_classes=args.num_classes, smoothing=smooth_factor)
+            random_class_train_soft_subset = smooth_labels(random_train, num_classes=args.num_classes, smoothing=smooth_factor)
             train_loader = DataLoader(random_class_train_soft_subset, args.batch_size, shuffle=True)
         
             total_train_batch = len(train_loader)

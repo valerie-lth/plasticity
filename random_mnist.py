@@ -36,11 +36,9 @@ class LeNet5(nn.Module):
     def __init__(self, activation='relu'):
         super().__init__()
         if activation == 'relu':
-            activation_fn = nn.relu()
-        elif activation =='leaky':
-            activation_fn = nn.leaky_relu()
+            activation_fn = nn.ReLu()
         elif activation == 'tanh':
-            activation_fn = nn.tanh()
+            activation_fn = nn.Tanh()
         else:
             activation_fn = nn.Identity()
 
@@ -159,7 +157,7 @@ if __name__=="__main__":
     parser.add_argument('--save-every-task', type=int, default=1)
     parser.add_argument('--log-dir', type=str, default="log_random_lenet/")
     parser.add_argument("--save", action='store_true')
-    parser.add_argument("--activation", type=str, default='relu')
+    parser.add_argument("--activation", type=str, default='tanh')
 
     
     args = parser.parse_args()
