@@ -1,5 +1,7 @@
 # Plasticity
 
+Partial code for collaboration
+
 To run code for `random_mnist.py` \
 `nohup python random_mnist.py --num-tasks=50 --save > random512.log 2>&1 &`
 
